@@ -1,3 +1,8 @@
+* CHANGLELOG
+  - [README] added setup instruction for Mac OS X
+  - [Misc] added namespace support for basho_bench_config.erl
+  - [CouchDB] added basho_bench_driver_http_couch.erl implementation, examples/couch_http.config, examples/fixtures/*.json
+
 * basho_bench
 ** Overview
    [[http://travis-ci.org/basho/basho_bench][Travis-CI]] :: [[https://secure.travis-ci.org/basho/basho_bench.png]]
@@ -20,7 +25,7 @@
 ** Quick Start
 
    You must have [[http://erlang.org/download.html][Erlang/OTP R13B03]] or later to build and run Basho
-   Bench, and [[http://www.r-project.org/][R]] to generate graphs of your benchmarks.  A sane
+   Bench, and [[http://www.r-project.org/][R]] (instruction for Mac OS X setup see bellow) to generate graphs of your benchmarks.  A sane
    GNU-style build system is also required if you want to use =make=
    to build the project.
 
@@ -29,11 +34,18 @@ git clone git://github.com/basho/basho_bench.git
 cd basho_bench
 make all
 #+END_SRC
-   
+
+   You could use Mac OS X brew tool for R setup
+
+#+BEGIN_SRC shell
+brew install gfortran
+brew install R
+#+END_SRC
+
    This will build an executable script, =basho_bench=, which you can
    use to run one of the existing benchmark configurations from the
    =examples/= directory. You will likely have to make some minor directory
-   changes to the configs in order to get the examples running (see, e.g., the 
+   changes to the configs in order to get the examples running (see, e.g., the
    source of the bitcask and innostore benchmark config files for direction).
 
 #+BEGIN_SRC shell
@@ -54,8 +66,8 @@ Loading required package: proto
 Loading required package: reshape
 Loading required package: plyr
 Loading required package: digest
-null device 
-          1 
+null device
+          1
 $ open tests/current/summary.png
 #+END_SRC
 

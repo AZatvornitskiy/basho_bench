@@ -23,7 +23,7 @@
 
 -export([load/1,
          set/2,
-         get/1, get/2]).
+         get/1, get/2, get/3]).
 
 -include("basho_bench.hrl").
 
@@ -53,12 +53,15 @@ get(Key) ->
     end.
 
 get(Key, Default) ->
-    case application:get_env(basho_bench, Key) of
-        {ok, Value} ->
-            Value;
-        _ ->
-            Default
-    end.
+  get(basho_bench, Key, Default).
+
+get(Namespace, Key, Default) ->
+  case application:get_env(Namespace, Key) of
+      {ok, Value} ->
+          Value;
+      _ ->
+          Default
+  end.
 
 
 %% ===================================================================
